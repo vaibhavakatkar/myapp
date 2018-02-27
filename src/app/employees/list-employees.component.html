@@ -1,53 +1,57 @@
-<button (click)="getList()">getlist</button>
+
 
 <div class="panel panel-primary" *ngFor="let employe of newdata">
 
   <div class="panel-heading">
-    <h3 class="panel-title">{{employe.name}}</h3>
+ <div class="edit"><a href="/emp/create"> <span class="glyphicon glyphicon-edit"></span></a> </div>
+ <div class="right"><a href="/emp/"><span class="glyphicon glyphicon-eye-open"  (click)="onItemClick(employe)"></span></a> </div>
+
+    <h3 class="panel-title">{{employe.fullname}}</h3>
+  
     </div>
 
     <div class="panel-body">
       <div class="col-xs-10">
         <div class="row vertical-align" >
             <div class="col-xs-4">
-              <img class="imageClass"  [src]="employe.photopath"alt="image not present">
+              <img class="imageClass"  [src]="employe.photo"alt="image not present">
             </div>
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-6">Gender</div>
-                    <div class="col-xs-6">: {{employe.uuid}}</div>
+                    <div class="col-xs-6">: {{employe.gender}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">name</div>
-                    <div class="col-xs-6">: {{employe.uuid}}</div>
+                    <div class="col-xs-6">: {{employe.fullname}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">email</div>
-                    <div class="col-xs-6">: {{employe.version}}</div>
+                    <div class="col-xs-6">: {{employe.email}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">phonenumber</div>
-                    <div class="col-xs-6">: {{employe.desc}}</div>
+                    <div class="col-xs-6">: {{employe.phoneNumer}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">contact</div>
-                    <div class="col-xs-6">: {{employe.desc}}</div>
+                    <div class="col-xs-6">: {{employe.contactPrefernce}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">dob</div>
-                    <div class="col-xs-6">: {{employe.joindate}}</div>
+                    <div class="col-xs-6">: {{employe.dob}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">department</div>
-                    <div class="col-xs-6">: {{employe.skill}}</div>
+                    <div class="col-xs-6">: {{employe.department}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">isActive</div>
-                    <div class="col-xs-6">: {{employe.active}}</div>
+                    <div class="col-xs-6">: {{employe.isActive}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">photopath</div>
-                    <div class="col-xs-6">: {{employe.joindate}}</div>
+                    <div class="col-xs-6">: {{employe.photo}}</div>
                 </div>
 
 

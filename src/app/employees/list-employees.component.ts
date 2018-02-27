@@ -8,74 +8,14 @@ import { HttpClient} from '@angular/common/http'; //need for call api
 })
 export class ListEmployeesComponent implements OnInit {
     newdata: any[];
-    name: any;
-    uuid:any;
-    version :any;
-    desc:any;
-    joindate:any;
-    skill:any;
-    active:any;
+  
     
-   employees : Employee[]=[
-    {   id:1,
-        name:"Jhon",
-        gender:"male",
-        email:"vkg@gmail.com",
-        phonenumber:123548481513,
-        contact:"sadsad",
-        dob:new Date('11/20/1991'),
-        department:"java",
-        isActive:true,
-        photopath:"assets/images/goodEmployee1.png"},
-    {
-        id:2,
-        name:"mark",
-        gender:"male",
-        email:"vkg@gmail.com",
-        phonenumber:123548481513,
-        contact:"sadsad",
-        dob:new Date('11/20/1991'),
-        department:"java",
-        isActive:true,
-        photopath:"assets/images/employee.png"},
-    {
-        id:3,
-        name:"Rock",
-        gender:"male",
-        email:"vkg@gmail.com",
-        phonenumber:123548481513,
-        contact:"sadsad",
-        dob:new Date('11/20/1991'),
-        department:"java",
-        isActive:true,
-        photopath:"assets/images/goodEmployee1.png"},
-        {
-            id:3,
-            name:"Rock",
-            gender:"male",
-            email:"vkg@gmail.com",
-            phonenumber:123548481513,
-            contact:"sadsad",
-            dob:new Date('11/20/1991'),
-            department:"java",
-            isActive:true,
-            photopath:"assets/images/goodEmployee1.png"},
-            {
-                id:3,
-                name:"Rock",
-                gender:"male",
-                email:"vkg@gmail.com",
-                phonenumber:123548481513,
-                contact:"sadsad",
-                dob:new Date('11/20/1991'),
-                department:"java",
-                isActive:true,
-                photopath:"assets/images/goodEmployee1.png"} ];
+   employees : Employee[]=[];
        
 
         
         getList(){
-            this.httpClient.get('http://localhost:8080/Employee/getAll?type=employee')
+            this.httpClient.get('http://localhost:8080/Employee/getAll?type=gemp')
             .subscribe(
                 (data: any[]) => {
 
@@ -86,9 +26,15 @@ export class ListEmployeesComponent implements OnInit {
             )
         }
 
-  constructor(private httpClient : HttpClient) {}
+  constructor(private httpClient : HttpClient) {
+    this.getList();
+  }
 
   ngOnInit() {
+  }
+
+  onItemClick(emp : any[]){
+alert("sdfsdf"+emp);
   }
 
 }

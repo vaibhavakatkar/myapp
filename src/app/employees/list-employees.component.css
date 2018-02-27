@@ -7,3 +7,26 @@
     align-items: center;
 }
 
+.glyphicon-eye-open:before{
+    font-size: 1.5rem;
+   
+    color:white;
+}
+
+.glyphicon-edit:before
+{
+    font-size: 1.5rem;
+   
+    color:white;
+}
+.right{
+    text-align:right;
+    width:100%;
+    height:0px;
+    }
+.edit{
+    text-align:right;
+    width:98%;
+    height:0px;
+    color:white;
+}

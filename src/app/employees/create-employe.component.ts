@@ -9,6 +9,7 @@ import {Observable} from "rxjs/Observable";
 import { BsDatepickerConfig }  from 'ngx-bootstrap/datepicker'
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { Observer } from 'rxjs/Observer';
+import { Router } from '@angular/router';
 //import { Observable } from 'rxjs/Observable';
 const httpOptions = {
    headers: new HttpHeaders({'Content-Type':  'application/json'})
@@ -40,7 +41,7 @@ contactPrefernce:any;
     {id:4,name:"Paroll"}];
 
     isActive=true;
-  constructor(private httpClient : HttpClient) { 
+  constructor(private httpClient : HttpClient,private router: Router) { 
     this.datepickerConfig= Object.assign({},{containerClass:"theme-dark-blue"})
   }
   togglePhotoPreview(){
@@ -144,30 +145,33 @@ contactPrefernce:any;
 saveEmployee(empForms :NgForm){
   this.Insertdata = empForms.value;
   
-   
+   debugger;
 
 console.log(this.Insertdata);
   let body = {
     "fullname" : this.Insertdata.Name,
     "email" :this.Insertdata.email,
    "phoneNumer" :this.Insertdata.phonnumber,
-  "gender" : this.Insertdata.gender,
+    "gender" : this.Insertdata.gender,
    "contactPrefernce" : this.Insertdata.contactPrefernce,
-   "isActive" : this.Insertdata.isActive,
+    "isActive" : this.Insertdata.isActive,
    
     "department" : this.Insertdata.department,
     "dob" :this.Insertdata.dob,
     "photo": this.Insertdata.photopath
 };
-alert(body);
+
 
   this.httpClient.post(`http://localhost:8080/Employee/submit?type=gemp`,
   body, httpOptions)
   .subscribe(
     (data:any) => {
-      console.log(data);
+     // console.log(data);
+      
     }
+  
   )
+  this.router.navigate(['list']);
 }
 
 }
