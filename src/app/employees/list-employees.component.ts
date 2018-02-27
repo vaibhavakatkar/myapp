@@ -7,8 +7,17 @@ import { HttpClient} from '@angular/common/http'; //need for call api
   styleUrls: ['./list-employees.component.css']
 })
 export class ListEmployeesComponent implements OnInit {
+    newdata: any[];
+    name: any;
+    uuid:any;
+    version :any;
+    desc:any;
+    joindate:any;
+    skill:any;
+    active:any;
+    
    employees : Employee[]=[
-    {id:1,
+    {   id:1,
         name:"Jhon",
         gender:"male",
         email:"vkg@gmail.com",
@@ -39,7 +48,29 @@ export class ListEmployeesComponent implements OnInit {
         dob:new Date('11/20/1991'),
         department:"java",
         isActive:true,
-        photopath:"assets/images/goodEmployee1.png"} ];
+        photopath:"assets/images/goodEmployee1.png"},
+        {
+            id:3,
+            name:"Rock",
+            gender:"male",
+            email:"vkg@gmail.com",
+            phonenumber:123548481513,
+            contact:"sadsad",
+            dob:new Date('11/20/1991'),
+            department:"java",
+            isActive:true,
+            photopath:"assets/images/goodEmployee1.png"},
+            {
+                id:3,
+                name:"Rock",
+                gender:"male",
+                email:"vkg@gmail.com",
+                phonenumber:123548481513,
+                contact:"sadsad",
+                dob:new Date('11/20/1991'),
+                department:"java",
+                isActive:true,
+                photopath:"assets/images/goodEmployee1.png"} ];
        
 
         
@@ -47,7 +78,9 @@ export class ListEmployeesComponent implements OnInit {
             this.httpClient.get('http://localhost:8080/Employee/getAll?type=employee')
             .subscribe(
                 (data: any[]) => {
+
                     console.log(data);
+                    this.newdata = data;
                 }
 
             )

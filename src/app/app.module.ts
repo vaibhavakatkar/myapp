@@ -5,9 +5,6 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
 import {InterceptorModule} from './interceptor.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
-
-
 import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeComponent } from './employees/create-employe.component';
@@ -33,7 +30,7 @@ const appRoutes : Routes =
   //  InterceptorModule,
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    //InterceptorModule
+   InterceptorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

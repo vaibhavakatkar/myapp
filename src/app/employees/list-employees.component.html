@@ -1,5 +1,7 @@
-<div class="panel panel-primary" *ngFor="let employe of employees">
 <button (click)="getList()">getlist</button>
+
+<div class="panel panel-primary" *ngFor="let employe of newdata">
+
   <div class="panel-heading">
     <h3 class="panel-title">{{employe.name}}</h3>
     </div>
@@ -13,39 +15,39 @@
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-6">Gender</div>
-                    <div class="col-xs-6">: {{employe.gender}}</div>
+                    <div class="col-xs-6">: {{employe.uuid}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">name</div>
-                    <div class="col-xs-6">: {{employe.name}}</div>
+                    <div class="col-xs-6">: {{employe.uuid}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">email</div>
-                    <div class="col-xs-6">: {{employe.email}}</div>
+                    <div class="col-xs-6">: {{employe.version}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">phonenumber</div>
-                    <div class="col-xs-6">: {{employe.phonenumber}}</div>
+                    <div class="col-xs-6">: {{employe.desc}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">contact</div>
-                    <div class="col-xs-6">: {{employe.contact}}</div>
+                    <div class="col-xs-6">: {{employe.desc}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">dob</div>
-                    <div class="col-xs-6">: {{employe.dob | date}}</div>
+                    <div class="col-xs-6">: {{employe.joindate}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">department</div>
-                    <div class="col-xs-6">: {{employe.department}}</div>
+                    <div class="col-xs-6">: {{employe.skill}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">isActive</div>
-                    <div class="col-xs-6">: {{employe.isActive}}</div>
+                    <div class="col-xs-6">: {{employe.active}}</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">photopath</div>
-                    <div class="col-xs-6">: {{employe.photopath}}</div>
+                    <div class="col-xs-6">: {{employe.joindate}}</div>
                 </div>
 
 
