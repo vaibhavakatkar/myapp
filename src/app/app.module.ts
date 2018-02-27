@@ -8,20 +8,23 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeComponent } from './employees/create-employe.component';
+import { LoginComponent } from './login/login.component';
 
 //This code for rout the request lis
 const appRoutes : Routes =
 [
   { path:'home',component:AppComponent},
+  {path: 'login', component: LoginComponent},
   { path:'list',component:ListEmployeesComponent},
   { path:'create',component:CreateEmployeComponent},
-  { path:'',redirectTo:'list',pathMatch:'full'}
+  { path:'',redirectTo:'login',pathMatch:'full'}
 ]   
 @NgModule({
   declarations: [
     AppComponent,
     ListEmployeesComponent,
-    CreateEmployeComponent
+    CreateEmployeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
