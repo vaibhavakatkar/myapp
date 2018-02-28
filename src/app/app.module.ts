@@ -9,14 +9,21 @@ import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeComponent } from './employees/create-employe.component';
 import { LoginComponent } from './login/login.component';
+import { BaseComponent } from './base/base.component';
 
 //This code for rout the request lis
 const appRoutes : Routes =
 [
-  { path:'home',component:AppComponent},
+  //{ path:'base',component:BaseComponent},
   {path: 'login', component: LoginComponent},
-  { path:'list',component:ListEmployeesComponent},
-  { path:'create',component:CreateEmployeComponent},
+  { path:'list',component:BaseComponent,
+     children:[{path:'',component:ListEmployeesComponent}]},
+   { path:'create',component:BaseComponent,
+     children:[{path:'',component:CreateEmployeComponent}]},
+     {path: 'list/list', redirectTo:'list'},
+     {path: 'create/list', redirectTo:'list'},
+     {path: 'list/create', redirectTo:'create'},
+     {path: 'create/create', redirectTo:'create'},
   { path:'',redirectTo:'login',pathMatch:'full'}
 ]   
 @NgModule({
@@ -24,7 +31,8 @@ const appRoutes : Routes =
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeComponent,
-    LoginComponent
+    LoginComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
