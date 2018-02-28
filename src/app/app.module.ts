@@ -10,12 +10,16 @@ import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeComponent } from './employees/create-employe.component';
 import { LoginComponent } from './login/login.component';
 import { BaseComponent } from './base/base.component';
+import { EmpDetailComponent } from './emp-detail/emp-detail.component';
 
 //This code for rout the request lis
 const appRoutes : Routes =
 [
   //{ path:'base',component:BaseComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'detail', component: EmpDetailComponent},
+
+  
   { path:'list',component:BaseComponent,
      children:[{path:'',component:ListEmployeesComponent}]},
    { path:'create',component:BaseComponent,
@@ -32,7 +36,8 @@ const appRoutes : Routes =
     ListEmployeesComponent,
     CreateEmployeComponent,
     LoginComponent,
-    BaseComponent
+    BaseComponent,
+    EmpDetailComponent
   ],
   imports: [
     BrowserModule,

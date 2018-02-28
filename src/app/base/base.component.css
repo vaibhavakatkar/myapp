@@ -1,5 +1,13 @@
+.glyphicon-log-out:before
+{
+    font-size:2.5rem;
+    color:steelblue; 
+    padding: 0px;
+}
 .logout{
     text-align:right;
-    width:100%;
+    width:98%;
     height:0px;
+    padding: 12px;
+
     }

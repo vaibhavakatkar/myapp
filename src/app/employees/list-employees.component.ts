@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../model/emplyee.model';
 import { HttpClient} from '@angular/common/http'; //need for call api
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './list-employees.component.html',
@@ -26,7 +27,7 @@ export class ListEmployeesComponent implements OnInit {
             )
         }
 
-  constructor(private httpClient : HttpClient) {
+  constructor(private httpClient : HttpClient,private router: Router) {
     this.getList();
   }
 
@@ -34,7 +35,9 @@ export class ListEmployeesComponent implements OnInit {
   }
 
   onItemClick(emp : any[]){
-alert("sdfsdf"+emp);
+    this.router.navigate(['detail']);
+
+
   }
 
 }
