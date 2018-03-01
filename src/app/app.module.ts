@@ -11,6 +11,7 @@ import { CreateEmployeComponent } from './employees/create-employe.component';
 import { LoginComponent } from './login/login.component';
 import { BaseComponent } from './base/base.component';
 import { EmpDetailComponent } from './emp-detail/emp-detail.component';
+import { EmpServiceComponent } from './emp-service/emp-service.component';
 
 //This code for rout the request lis
 const appRoutes : Routes =
@@ -48,7 +49,7 @@ const appRoutes : Routes =
     RouterModule.forRoot(appRoutes),
    InterceptorModule
   ],
-  providers: [],
+  providers: [CreateEmployeComponent,EmpServiceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,9 @@ import { BsDatepickerConfig }  from 'ngx-bootstrap/datepicker'
 import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { Observer } from 'rxjs/Observer';
 import { Router } from '@angular/router';
+import { ListEmployeesComponent } from './list-employees.component';
+import { Employee } from '../model/emplyee.model';
+import { EmpServiceComponent } from '../emp-service/emp-service.component';
 //import { Observable } from 'rxjs/Observable';
 const httpOptions = {
    headers: new HttpHeaders({'Content-Type':  'application/json'})
@@ -24,12 +27,13 @@ const httpOptions = {
 export class CreateEmployeComponent implements OnInit {
 
 Insertdata: any;
-
-Name: any;
-email :any;
-phonnumber:any;
-gender:any;
-contactPrefernce:any;
+ email123 ="aaaaaaaaaaaaaaaaaaaaaaa";
+// Name: any;
+// email :any;
+// phonnumber:any;
+// gender:any;
+// contactPrefernce:any;
+selectedEmployee : Employee =new Employee();
 //isActive:any;
 
   previewPhoto=false;
@@ -41,14 +45,49 @@ contactPrefernce:any;
     {id:4,name:"Paroll"}];
 
     isActive=true;
-  constructor(private httpClient : HttpClient,private router: Router) { 
+
+    resetForm(employeeForm?: NgForm) {
+      if (employeeForm != null)
+      employeeForm.reset();
+      this.employeeService.selectedEmployee = {
+        id: null,
+        fullname: '',
+        gender: '',
+        email: '',
+        department: '',
+        uuid:'',
+        contactPrefernce: '',
+         photo: '',
+         dob:'',
+         isActive:null,
+         phoneNumer:null,
+
+       
+        
+      }
+    }
+ 
+
+// fullname=this.selectemp.fullname;
+
+// fullname1=this.selectemp.fullname;
+
+  constructor(private httpClient : HttpClient,private router: Router,private employeeService: EmpServiceComponent) { 
     this.datepickerConfig= Object.assign({},{containerClass:"theme-dark-blue"})
+    this.resetForm();
   }
   togglePhotoPreview(){
     this.previewPhoto=!this.previewPhoto;
   }
 
   ngOnInit() {
+    // this.Insertdata={};
+    // this.email123 =JSON.stringify(this.selectemp.email);
+    // console.log(this.email123)
+   // console.log("new json"+JSON.stringify(this.emp.employees.values));
+   //alert(this.email123)
+  
+
   }
 
   // saveEmployee(empForms :NgForm) : void{
@@ -138,6 +177,21 @@ contactPrefernce:any;
 //     }
 //   )
 // }
+onItemClickEdit(selectedEmployee){
+ debugger;
+  //console.log(emp.fullname);
+// this.Insertdata=emp;
+//this.fullname="AAAAAAAAAAAAAAAAAa";
+//console.log("emp"+emp+"select"+JSON.stringify(this.selectemp.email));
+
+console.log(this.selectedEmployee.fullname);
+//alert(this.email123)
+//this.email123 =JSON.stringify(this.selectemp.email);
+}
+
+onKeyUp(){
+ // alert(this.email123)
+}
 
 
 
@@ -145,9 +199,9 @@ contactPrefernce:any;
 saveEmployee(empForms :NgForm){
   this.Insertdata = empForms.value;
   
-   debugger;
+   //debugger;
 
-console.log(this.Insertdata);
+// console.log(this.Insertdata);
   let body = {
     "fullname" : this.Insertdata.Name,
     "email" :this.Insertdata.email,

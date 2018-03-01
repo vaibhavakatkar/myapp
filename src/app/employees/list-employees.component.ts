@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Employee } from '../model/emplyee.model';
 import { HttpClient} from '@angular/common/http'; //need for call api
 import { Router } from '@angular/router';
+import { CreateEmployeComponent } from './create-employe.component';
+import { EmpDetailComponent } from '../emp-detail/emp-detail.component';
+import { EmpServiceComponent } from '../emp-service/emp-service.component';
 
 @Component({
   templateUrl: './list-employees.component.html',
   styleUrls: ['./list-employees.component.css']
 })
+
 export class ListEmployeesComponent implements OnInit {
     newdata: any[];
   
     
    employees : Employee[]=[];
-       
+
 
         
         getList(){
@@ -27,15 +31,19 @@ export class ListEmployeesComponent implements OnInit {
             )
         }
 
-  constructor(private httpClient : HttpClient,private router: Router) {
+  constructor(private httpClient : HttpClient,private router: Router,private service : EmpServiceComponent) {
     this.getList();
   }
 
   ngOnInit() {
   }
 
-  onItemClick(emp : any[]){
-    this.router.navigate(['detail']);
+  onItemClick(emp :Employee){
+debugger;
+  
+    this.service.selectedEmployee=Object.assign({},emp);
+    this.router.navigate(['create']);
+   //this.create.onItemClickEdit(JSON.stringify(this.create.selectemp));
 
 
   }

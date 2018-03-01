@@ -1,12 +1,13 @@
 export class Employee{
     id:number;
-    name:string;
+    uuid:string;
+    fullname:string;
     gender:string;
     email?:string;
-    phonenumber?:number;
-    contact?:string;
-    dob:Date;
+    phoneNumer?:number;
+    contactPrefernce?:string;
+    dob:string;
     department:string;
     isActive:boolean;
-    photopath?:string;
+    photo?:string;
 }
