@@ -14,17 +14,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   login(){
-    this.loading = true;
-    if(this.model.username=='vaibhav' && this.model.password=='vaibhav')
+   debugger;
+    if(this.model.username=='admin' && this.model.password=='admin')
     {
      // this.router.navigate([this.returnUrl]);
      this.router.navigate(['list']);
+     
     }
     else
     {
       this.loading = false;
       this.router.navigate(['login']);
     }
+
+     if (this.model.username=='vaibhav' && this.model.password=='vaibhav' && this.model.username!='admin') {
+      this.loading = true;
+      this.router.navigate(['detail']);
+     }
+
   }
 
 }

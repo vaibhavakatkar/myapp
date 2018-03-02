@@ -74,7 +74,7 @@ selectedEmployee : Employee =new Employee();
 
   constructor(private httpClient : HttpClient,private router: Router,private employeeService: EmpServiceComponent) { 
     this.datepickerConfig= Object.assign({},{containerClass:"theme-dark-blue"})
-    this.resetForm();
+ //   this.resetForm();
   }
   togglePhotoPreview(){
     this.previewPhoto=!this.previewPhoto;
@@ -203,16 +203,16 @@ saveEmployee(empForms :NgForm){
 
 // console.log(this.Insertdata);
   let body = {
-    "fullname" : this.Insertdata.Name,
+    "fullname" : this.Insertdata.fullname,
     "email" :this.Insertdata.email,
-   "phoneNumer" :this.Insertdata.phonnumber,
+   "phoneNumer" :this.Insertdata.phoneNumer,
     "gender" : this.Insertdata.gender,
    "contactPrefernce" : this.Insertdata.contactPrefernce,
     "isActive" : this.Insertdata.isActive,
    
     "department" : this.Insertdata.department,
     "dob" :this.Insertdata.dob,
-    "photo": this.Insertdata.photopath
+    "photo": this.Insertdata.photo
 };
 
 

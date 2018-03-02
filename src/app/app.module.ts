@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule,Routes} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
-import {InterceptorModule} from './interceptor.module';
+import { InterceptorModule } from './interceptor.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AppComponent } from './app.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
@@ -14,23 +14,25 @@ import { EmpDetailComponent } from './emp-detail/emp-detail.component';
 import { EmpServiceComponent } from './emp-service/emp-service.component';
 
 //This code for rout the request lis
-const appRoutes : Routes =
-[
-  //{ path:'base',component:BaseComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'detail', component: EmpDetailComponent},
-
-  
-  { path:'list',component:BaseComponent,
-     children:[{path:'',component:ListEmployeesComponent}]},
-   { path:'create',component:BaseComponent,
-     children:[{path:'',component:CreateEmployeComponent}]},
-     {path: 'list/list', redirectTo:'list'},
-     {path: 'create/list', redirectTo:'list'},
-     {path: 'list/create', redirectTo:'create'},
-     {path: 'create/create', redirectTo:'create'},
-  { path:'',redirectTo:'login',pathMatch:'full'}
-]   
+const appRoutes: Routes =
+  [
+    //{ path:'base',component:BaseComponent},
+    { path: 'login', component: LoginComponent },
+    { path: 'detail', component: EmpDetailComponent },
+    {
+      path: 'list', component: BaseComponent,
+      children: [{ path: '', component: ListEmployeesComponent }]
+    },
+    {
+      path: 'create', component: BaseComponent,
+      children: [{ path: '', component: CreateEmployeComponent }]
+    },
+    { path: 'list/list', redirectTo: 'list' },
+    { path: 'create/list', redirectTo: 'list' },
+    { path: 'list/create', redirectTo: 'create' },
+    { path: 'create/create', redirectTo: 'create' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' }
+  ]
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,12 +46,12 @@ const appRoutes : Routes =
     BrowserModule,
     FormsModule,
     HttpClientModule,
-  //  InterceptorModule,
+    //  InterceptorModule,
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-   InterceptorModule
+    InterceptorModule
   ],
-  providers: [CreateEmployeComponent,EmpServiceComponent],
+  providers: [CreateEmployeComponent, EmpServiceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

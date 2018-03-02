@@ -1,22 +1,108 @@
-<div class="login-page" >
-  <div class="row justify-content-md-center">
-      <div class="col-md-4">
-          <img src="assets/images/logo.png" width="150px" class="user-avatar" />
-          <h1>SB Admin BS4 Angular5</h1>
-          <form role="form">
-              <div class="form-content">
-                  <div class="form-group">
-                      <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
-                  </div>
+<!DOCTYPE html>
+<html lang="en">
 
-                  <div class="form-group">
-                      <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
-                  </div>
-              </div>
-              <a class="btn rounded-btn"  > Log in </a>
-              &nbsp;
-              <a class="btn rounded-btn">Register</a>
-          </form>
-      </div>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="jumbotron text-center">
+    <h1>Welocme</h1>
+    <p> </p>
   </div>
-</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3 style="text-align: center">Log In Time</h3>
+        <br>
+        <br>
+        <div style="text-align: center ">
+        <button  type='submit' class="btn btn-primary" (click)="Login()">Login</button>
+      </div>
+        <div class="form-group">
+          <br>
+          <br>
+          
+          <br>{{login | date :formatsDate}}
+          <input disabled id="login" [(ngModel)]="login" name="login" type="text" class="form-control">
+          <table width="100%" border="1">
+            <tr>
+              <th colspan="2">Test format Date Angular v.{{version}}</th>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Format</th>
+            </tr>
+            <tr *ngFor="let format of formatsDateTest">
+              <td>{{login | date: format}}</td>
+              <td>{{format}}</td>
+            </tr>
+            </table>
+        </div>
+
+
+      </div>
+      <div class="col-sm-4">
+        <h3 style="text-align: center">Total Hrs</h3>
+        <ul>
+          <li>
+            Login Time : {{login | date :formatsDate}}
+            <br>
+            <br>
+           
+            <br>
+            <br>
+          </li>
+          <li>
+            Logout Time : {{logout | date :formatsDate}}
+            <br>
+            <br>
+            <br>
+            <br>
+          </li>
+          <li>
+            Total Time : {{total }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <h3 style="text-align: center">Log Out Time</h3>
+        <br><br>
+        <div style="text-align: center ">
+        <button type='submit' (click)="Logout()" class="btn btn-primary">Logout</button>
+        </div>
+        <div class="form-group">
+          &nbsp; &nbsp; &nbsp;
+          <br>
+          <br>
+          <br>
+          <br>
+          {{logout | date :formatsDate}}
+          <input disabled id="logout" [(ngModel)]="logout" name="logout" type="text" class="form-control">
+          <table width="100%" border="1">
+              <tr>
+                  <th>Date</th>
+                  <th>Format</th>
+              </tr>
+              <tr *ngFor="let format of formatsDateTest">
+                <td>{{logout | date: format}}</td>
+                <td>{{format}}</td>
+              </tr>
+              </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
