@@ -4,6 +4,9 @@ import { Employee } from '../model/emplyee.model';
 import { Jsonp } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { EmpLoginListComponent } from './emp-login-list/emp-login-list.component';
+import { Router } from '@angular/router';
+import { LoginDetails } from '../model/logindetais.model';
 
 @Component({
   selector: 'app-emp-detail',
@@ -15,9 +18,9 @@ import { HttpClient } from '@angular/common/http';
 export class EmpDetailComponent implements OnInit {
   circularObj;
   Username;
-
+ fullname;
   obsTextMsg: Observable<string>
-  EmpByname;
+  emplist : Employee;
   login: any;
   logout: any;
   total: any;
@@ -81,7 +84,7 @@ export class EmpDetailComponent implements OnInit {
     this.Username;
     this.login;
     let body = {
-      "userName" : this.EmpByname.fullname,
+      "userName" : this.emplist.fullname,
       "loginTime" :this.login,
      "logoutTime" :this.logout,
       "total" : hr+":"+min+":"+sec,
@@ -93,16 +96,16 @@ export class EmpDetailComponent implements OnInit {
   
     this.servie.saveLoginDetails(body);
   }
-  constructor(private servie : EmpServiceComponent,private httpClient : HttpClient,private logindetail : EmpLoginListComponent) {
+  constructor(private router: Router,private servie : EmpServiceComponent,private httpClient : HttpClient,private logindetail : EmpLoginListComponent) {
   this.Username="Vaibhav";
   this.httpClient.get('http://localhost:8080/Employee/getGempByName?type=gempname&name='+this.Username+'')
   .subscribe(
-      (data: any[]) => {
+      (data: any) => {
 
           console.log(data);
           
-          this.EmpByname=data;
-          alert(JSON.stringify(this.EmpByname.fullname))
+          this.emplist=data;
+          
       }
 
   )
@@ -118,10 +121,13 @@ export class EmpDetailComponent implements OnInit {
 
 
 
-  onItemClick(emp){
-alert(emp)
+  onItemClick(emplist){
 
-
+    this.servie.emplist=Object.assign({},this.emplist);
+  alert(JSON.stringify(this.emplist))
+    // this.logindetail.emplist=Object.assign({},this.emplist);
+    // this.logindetail.listEmpDetail(this.emplist);
+    this.router.navigate(['login-detal']);
   }
 
 }

@@ -16,15 +16,12 @@ export class ListEmployeesComponent implements OnInit {
   
     
    employees : Employee[]=[];
-
-
-        
+ 
         getList(){
             this.httpClient.get('http://localhost:8080/Employee/getAll?type=gemp')
             .subscribe(
                 (data: any[]) => {
-
-                    console.log(data);
+                console.log(data);
                     this.newdata = data;
                 }
 
@@ -33,15 +30,16 @@ export class ListEmployeesComponent implements OnInit {
 
   constructor(private httpClient : HttpClient,private router: Router,private service : EmpServiceComponent) {
     this.getList();
+   
   }
 
   ngOnInit() {
+    this.getList();
   }
 
   onItemClick(emp :Employee){
-debugger;
-  
-    this.service.selectedEmployee=Object.assign({},emp);
+
+this.service.selectedEmployee=Object.assign({},emp);
     this.router.navigate(['create']);
    //this.create.onItemClickEdit(JSON.stringify(this.create.selectemp));
 

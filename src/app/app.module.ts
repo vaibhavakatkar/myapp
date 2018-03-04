@@ -12,11 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { BaseComponent } from './base/base.component';
 import { EmpDetailComponent } from './emp-detail/emp-detail.component';
 import { EmpServiceComponent } from './emp-service/emp-service.component';
+import { EmpLoginListComponent } from './emp-detail/emp-login-list/emp-login-list.component';
 
 //This code for rout the request lis
 const appRoutes: Routes =
   [
     //{ path:'base',component:BaseComponent},
+    { path: 'login-detal', component: EmpLoginListComponent },
     { path: 'login', component: LoginComponent },
     { path: 'detail', component: EmpDetailComponent },
     {
@@ -32,6 +34,9 @@ const appRoutes: Routes =
     { path: 'list/create', redirectTo: 'create' },
     { path: 'create/create', redirectTo: 'create' },
     { path: '', redirectTo: 'login', pathMatch: 'full' }
+
+ 
+
   ]
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ const appRoutes: Routes =
     CreateEmployeComponent,
     LoginComponent,
     BaseComponent,
-    EmpDetailComponent
+    EmpDetailComponent,
+    EmpLoginListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,7 @@ const appRoutes: Routes =
     RouterModule.forRoot(appRoutes),
     InterceptorModule
   ],
-  providers: [CreateEmployeComponent, EmpServiceComponent],
+  providers: [CreateEmployeComponent, EmpServiceComponent,EmpLoginListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

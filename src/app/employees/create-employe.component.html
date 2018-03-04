@@ -11,7 +11,6 @@
           <div class="form-group">
 
              <label for="fullname">Full Name </label>
-         {{employeeService.selectedEmployee  | json}}
              <input  id="fullname"  [(ngModel)]="employeeService.selectedEmployee.fullname"    name="fullname" type="text" class="form-control">
           </div>
 
@@ -110,4 +109,4 @@
    
 </div>
 </form>
-{{employeeForm.value | json}}
+<!-- {{employeeForm.value | json}} -->

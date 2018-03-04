@@ -21,12 +21,12 @@ export class EmpServiceComponent implements OnInit {
   Insertdata:any;                                                                                           
   selectedEmployee : Employee;
   selectedEmp;
+  emplist : Employee;
   data;
 
   EmpName: any;
 
   constructor(private httpClient : HttpClient,private router: Router) { 
-    
   }
 
   getEmpByName(EmpName): Observable<any>{
