@@ -14,10 +14,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   login(){
-   debugger;
+  
     if(this.model.username=='admin' && this.model.password=='admin')
     {
      // this.router.navigate([this.returnUrl]);
+
      this.router.navigate(['list']);
      
     }

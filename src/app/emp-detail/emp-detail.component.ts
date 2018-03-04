@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpServiceComponent } from '../emp-service/emp-service.component';
+import { Employee } from '../model/emplyee.model';
+import { Jsonp } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-emp-detail',
@@ -8,7 +13,11 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class EmpDetailComponent implements OnInit {
+  circularObj;
+  Username;
 
+  obsTextMsg: Observable<string>
+  EmpByname;
   login: any;
   logout: any;
   total: any;
@@ -16,7 +25,7 @@ export class EmpDetailComponent implements OnInit {
     'dd/MM/yyyy',
     'dd/MM/yyyy hh:mm:ss',
     'dd-MM-yyyy',
-    'dd-MM-yyyy HH:mm:ss',
+    'dd-MMM-yyyy HH:mm:ss',
     'MM/dd/yyyy',
     'MM/dd/yyyy hh:mm:ss',
     'yyyy/MM/dd',
@@ -27,18 +36,21 @@ export class EmpDetailComponent implements OnInit {
   formatsDate: string[] = [
     'dd/MM/yyyy hh:mm:ss',
   ];
-
+  formatsMonth: string[] = [
+    'MMM',
+  ];
 
 
   //dateNow : Date = new Date();
   //dateNowISO = this.dateNow.toISOString();
   Login() {
-
+   
     let dateNow: Date = new Date();
     let dateNowMilliseconds = dateNow;
 
     this.login = dateNowMilliseconds;
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance('Login Time is '+ this.login+"Thank you sir Have a nice Day "));
+    
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance("Login Time is Thank you sir Have a nice Day "));
   }
   Logout() {
     let dateNow: Date = new Date();
@@ -66,11 +78,50 @@ export class EmpDetailComponent implements OnInit {
     sec = Math.floor(diff / divideBy['s']);
     this.total = "Day : " + dd +" Hrs : " + hr+' Min : ' + min + ' Sec : ' + sec;
     window.speechSynthesis.speak(new SpeechSynthesisUtterance('Logout Time is '+hr+'hars'+min+"minit"+sec+"Second     Thank you Sir"));
- 
+    this.Username;
+    this.login;
+    let body = {
+      "userName" : this.EmpByname.fullname,
+      "loginTime" :this.login,
+     "logoutTime" :this.logout,
+      "total" : hr+":"+min+":"+sec,
+     "month" :dateNow.getMonth(),
+      "year" : dateNow.getFullYear(),
+     
+      "day" : dateNow.getUTCDate()
+  };
+  
+    this.servie.saveLoginDetails(body);
   }
-  constructor() { } 
+  constructor(private servie : EmpServiceComponent,private httpClient : HttpClient,private logindetail : EmpLoginListComponent) {
+  this.Username="Vaibhav";
+  this.httpClient.get('http://localhost:8080/Employee/getGempByName?type=gempname&name='+this.Username+'')
+  .subscribe(
+      (data: any[]) => {
+
+          console.log(data);
+          
+          this.EmpByname=data;
+          alert(JSON.stringify(this.EmpByname.fullname))
+      }
+
+  )
+   } 
+ 
+
+
 
   ngOnInit() {
+    
+  }
+
+
+
+
+  onItemClick(emp){
+alert(emp)
+
+
   }
 
 }
