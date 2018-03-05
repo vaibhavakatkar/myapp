@@ -22,17 +22,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
 
-          <img class="imageClass"  [src]="servie.emplist.photo" alt="image not present">
+          <img class="imageClass"  [src]="servie.emplist.photo" alt="image not present"/>
           <div class="w3-display-bottomleft w3-container w3-text-black">
             <h2>{{servie.emplist.fullname}}</h2>
-            {{servie.emplist.fullname}}
+    
           </div>
         </div>
+
+        <br>
         <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> SSSSSS</p>
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> {{servie.emplist.fullname}}</p>
           <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{servie.emplist.email}}</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{servie.emplist.phoneNumer}}</p>
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
@@ -80,7 +82,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <div class="w3-twothird">
       <div class="w3-container w3-card w3-white w3-margin-bottom" >
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Login Details</h2>
-        <table class="table">
+        <table class="table w3-text-grey  table-hover table-condensed">
             <thead>
                 <tr>
                     <th>Day</th>
@@ -90,9 +92,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                     <th>Progress</th>
                 </tr>
             </thead>
-            <tbody  *ngFor="let employe of logindetal" >
+            <tbody class="table w3-text-grey " *ngFor="let employe of logindetal" >
                 <tr>
-                    <td>{{employe.day}}</td>
+                    <td >{{employe.day}}</td>
                     <td>{{employe.loginTime}}</td>
                     <td>{{employe.logoutTime}}</td>
                     <td>{{employe.total}}</td>
