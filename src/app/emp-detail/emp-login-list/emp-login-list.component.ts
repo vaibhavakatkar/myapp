@@ -32,8 +32,9 @@ day;
       }
      )
  }
-  constructor(private httpClient : HttpClient) {
+  constructor(private httpClient : HttpClient,private servie: EmpServiceComponent ) {
     this.width = window.innerHeight;
+    this.emplist=servie.emplist;
     this.getAllLogindetails();
     alert("getlogin"+this.logindetal)
    }
